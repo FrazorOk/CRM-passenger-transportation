@@ -1,0 +1,17 @@
+@import url('./nullstyle.scss');
+
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	margin: 0 auto;
+	background-size: fill;
+	background-color: rgb(244, 244, 244);
+}
+
+.page {
+	flex: 1 1 auto;
+	min-height: calc(100vh - 61px);
+	overflow-y: auto;
+}
