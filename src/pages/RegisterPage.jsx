@@ -19,7 +19,7 @@ const RegisterPage = () => {
 			}}>
 			<Container>
 				<Row className="justify-content-center mt-5 ">
-					<Col md={5} className="bg-light mt-5 pb-5">
+					<Col md={5} className="bg-light mt-5 pb-5 shadow">
 						<Row>
 							<h2 className="bg-dark p-3 text-center text-light">РЕЄСТРАЦІЯ</h2>
 						</Row>

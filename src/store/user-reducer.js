@@ -1,5 +1,4 @@
 import { child, get, getDatabase, ref, set, update } from 'firebase/database';
-import { useState } from 'react';
 import { fetchFlights } from './flights-reducer';
 
 let SET_USER = 'user-reducer/SET_USER';

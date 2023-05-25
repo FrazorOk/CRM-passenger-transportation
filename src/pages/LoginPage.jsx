@@ -3,7 +3,7 @@ import From from '../components/From';
 import { Col, Container, Nav, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { REGISTRATION_ROUTE } from '../utils/consts';
-import bground from '../assets/img/Mercedes-Benz_Bus_2017_Tourismo_15-2_RHD_Motion_526455_1280x959.jpg';
+import bground from '../assets/img/login_bg.jpg';
 import EmailLogin from '../components/EmailLogin';
 
 const LoginPage = () => {
@@ -22,7 +22,7 @@ const LoginPage = () => {
 			<Container>
 				<Tab.Container id="fill-tab-example" defaultActiveKey="key1">
 					<Row className="justify-content-center mt-5">
-						<Col md={5} className="bg-light mt-5 pb-5">
+						<Col md={5} className="bg-light mt-5 pb-5 shadow">
 							<Row>
 								<h2 className="bg-dark p-3 text-center text-light">ВХІД</h2>
 							</Row>
