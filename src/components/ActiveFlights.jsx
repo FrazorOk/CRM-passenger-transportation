@@ -12,7 +12,6 @@ const ActiveFlights = () => {
 
 	useEffect(() => {
 		dispatch(getUserFlights());
-		console.log(orderedFlights);
 	}, []);
 
 	useEffect(() => {

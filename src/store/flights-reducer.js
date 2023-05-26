@@ -60,6 +60,7 @@ export const setOrderedFlights = (flight) => ({
 	flight,
 });
 
+// thunks
 export const fetchFlights = () => (dispatch, getState) => {
 	let getFlightsData = async () => {
 		const dbRef = ref(getDatabase());
@@ -113,7 +114,6 @@ export const getOrderedFlights = (flights) => (dispatch, getState) => {
 	let getFlightsData = async () => {
 		const dbRef = ref(getDatabase());
 		let arr = [];
-		console.log(flights);
 
 		flights.forEach((flight, index) => {
 			return get(child(dbRef, `flights/${flight.id}`))

@@ -5,8 +5,33 @@ import { Link } from 'react-router-dom';
 import { REGISTRATION_ROUTE } from '../utils/consts';
 import bground from '../assets/img/login_bg.jpg';
 import EmailLogin from '../components/EmailLogin';
+import { authFromProvider } from '../store/user-reducer';
+import { useDispatch } from 'react-redux';
+import { FacebookAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const LoginPage = () => {
+	const dispatch = useDispatch();
+
+	let googleClickHandler = (e) => {
+		const provider = new GoogleAuthProvider();
+
+		const credential = (result) => {
+			return GoogleAuthProvider.credentialFromResult(result);
+		};
+
+		dispatch(authFromProvider(provider, credential));
+	};
+
+	let facebookClickHandler = (e) => {
+		const provider = new FacebookAuthProvider();
+
+		const credential = (result) => {
+			return FacebookAuthProvider.credentialFromResult(result);
+		};
+
+		dispatch(authFromProvider(provider, credential));
+	};
+
 	return (
 		<div
 			className="p-5"
@@ -32,9 +57,6 @@ const LoginPage = () => {
 										<Tab.Pane eventKey="key1">
 											<EmailLogin />
 										</Tab.Pane>
-										<Tab.Pane eventKey="key2">
-											<From />
-										</Tab.Pane>
 										<Tab.Pane eventKey="key3">
 											<From />
 										</Tab.Pane>
@@ -49,19 +71,21 @@ const LoginPage = () => {
 									<Nav className="justify-content-center gap-2 mt-1">
 										<Nav.Item className="bg-secondary rounded-3 ">
 											<Nav.Link className="text-white" eventKey="key1">
+												<img
+													src="https://cdn0.iconfinder.com/data/icons/apple-apps/100/Apple_Mail-512.png"
+													alt="mail"
+													width="22"
+													height="22"
+													className="d-inline-block align-top"
+												/>{' '}
 												Пошта
 											</Nav.Link>
 										</Nav.Item>
 										<Nav.Item className="bg-secondary rounded-3">
-											<Nav.Link className="text-white" eventKey="key2">
-												Телефон
-											</Nav.Link>
-										</Nav.Item>
-										<Nav.Item className="bg-secondary rounded-3">
-											<Nav.Link className="text-light" eventKey="key3">
+											<Nav.Link className="text-light" onClick={googleClickHandler}>
 												<img
 													src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/882px-Google_%22G%22_Logo.svg.png?20230305195327"
-													alt=""
+													alt="google"
 													width="20"
 													height="20"
 													className="d-inline-block align-top"
@@ -70,10 +94,10 @@ const LoginPage = () => {
 											</Nav.Link>
 										</Nav.Item>
 										<Nav.Item className="bg-secondary rounded-3">
-											<Nav.Link className="text-white" eventKey="key4">
+											<Nav.Link className="text-white" onClick={facebookClickHandler}>
 												<img
 													src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/2048px-Facebook_f_logo_%282021%29.svg.png"
-													alt=""
+													alt="facebook"
 													width="20"
 													height="20"
 													className="d-inline-block align-top"

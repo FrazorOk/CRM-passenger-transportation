@@ -30,14 +30,14 @@ const HomePage = () => {
 		<>
 			{authUser ? (
 				<Container style={{ marginTop: '100px' }}>
-					<Row className="gap-5 pb-5">
-						<Col xs={3} md={3} className="d-flex flex-column align-items-center">
+					<Row className="pb-5 g-5 justify-content-center">
+						<Col xs={12} md={3} className="d-flex flex-column align-items-center">
 							<HomeNavBar />
 							<Routes>
 								<Route path={FLIGHTS_ROUTE} element={<FlightsFilter />} />
 							</Routes>
 						</Col>
-						<Col xs={7} md={8}>
+						<Col xs={12} md={9} className="justify-content-center overflow-auto">
 							<Routes>
 								<Route path={HOME_ROUTE} element={<Profile />} />
 								<Route path={FLIGHTS_ROUTE} element={<Flights />} />

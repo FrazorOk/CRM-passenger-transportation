@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 const HomeNavBar = () => {
 	let role = useSelector((state) => state.user.userData.role);
-	console.log(role);
 
 	return (
 		<Nav defaultActiveKey="/home" className="flex-column gap-2 w-100 ">

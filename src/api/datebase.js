@@ -8,7 +8,7 @@ export const setUserOnDatabase = ({ uid, reloadUserInfo }) => {
 		uid,
 		email,
 		role: 'passenger',
-		flights: '',
+		flights: [],
 	});
 };
 

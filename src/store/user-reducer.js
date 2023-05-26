@@ -1,5 +1,7 @@
 import { child, get, getDatabase, ref, set, update } from 'firebase/database';
 import { fetchFlights } from './flights-reducer';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { getUserFromDatabase, setUserOnDatabase } from '../api/datebase';
 
 let SET_USER = 'user-reducer/SET_USER';
 let SET_USER_DATA = 'user-reducer/SET_USER_DATA';
@@ -24,13 +26,22 @@ const userReducer = (state = initState, action) => {
 			};
 
 		case SET_USER_DATA:
-			return {
-				...state,
-				userData: {
-					...action.data,
-					flights: [...Object.values(action.data.flights)],
-				},
-			};
+			if (action.data.flights) {
+				return {
+					...state,
+					userData: {
+						...action.data,
+						flights: [...Object.values(action.data.flights)],
+					},
+				};
+			} else {
+				return {
+					...state,
+					userData: {
+						...action.data,
+					},
+				};
+			}
 
 		case RESET_USER:
 			return {
@@ -40,6 +51,7 @@ const userReducer = (state = initState, action) => {
 					role: '',
 				},
 			};
+
 		case SET_USER_ROLE:
 			return {
 				...state,
@@ -86,6 +98,34 @@ export const setUserFlights = (flights) => ({
 	type: SET_USER_FLIGHTS,
 	flights,
 });
+
+// thunks
+export const authFromProvider = (provider, credential) => (dispatch, getState) => {
+	const auth = getAuth();
+	signInWithPopup(auth, provider)
+		.then((result) => {
+			credential(result);
+			const user = result.user;
+
+			getUserFromDatabase(user.uid).then((response) => {
+				if (response) {
+					dispatch(setUser(user));
+				} else {
+					let setsUser = async () => {
+						let setDataBase = await setUserOnDatabase(user);
+						let setUserInState = await dispatch(setUser(user));
+					};
+					setsUser();
+				}
+			});
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			const email = error.customData.email;
+			const credential = GoogleAuthProvider.credentialFromError(error);
+		});
+};
 
 export const fetchUserRole = (role) => (dispatch, getState) => {
 	let setUserRoleData = async () => {

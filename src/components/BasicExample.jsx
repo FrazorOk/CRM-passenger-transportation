@@ -25,7 +25,7 @@ function BasicExample() {
 
 	return (
 		<Navbar bg="dark" variant="dark" fixed="top">
-			<Container>
+			<Container className="d-flex flex-wrap align-items-center">
 				<Link to={LOGIN_ROUTE} className="d-flex align-items-center gap-1" style={{ textDecoration: 'none' }}>
 					<img alt="" src={logo} width="30" height="30" className="d-inline-block" style={{ filter: 'invert(100%)' }} />{' '}
 					<h3 className="pb-0 mb-0 text-white">ШвидкоТранспорт</h3>

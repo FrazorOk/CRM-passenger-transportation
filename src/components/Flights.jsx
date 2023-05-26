@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchFlights } from '../store/flights-reducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import FlightCard from './FlightCard';
 import FlightsPagination from './FlightsPagination';
 import FlightsSort from './FlightsSort';
@@ -47,27 +47,29 @@ const Flights = () => {
 	}, [pageActiveFlights, sortedFlights, fetch]);
 
 	return (
-		<>
-			<Row>
-				<FlightsSort xs={1} md={3} setSortOptions={setSortOptions} setSortedFlights={setSortedFlights} />
-			</Row>
-			<Row xs={1} md={3} className="g-4 mt-2">
-				{role === 'Диспетчер' || role === 'dispatcher' ? (
-					<FilghtsTable flights={flightsArr} pageActiveFlights={pageActiveFlights} maxFlights={maxFlights} />
-				) : (
-					flightsArr.map((flight, index) => {
-						return <FlightCard flight={flight} key={index} />;
-					})
-				)}
-			</Row>
-			<Row>
-				{sortedFlights.length - maxFlights > 0 ? (
-					<FlightsPagination maxPagination={maxPagination} setActiveFlights={setPageActiveFlights} activeFlights={pageActiveFlights} />
-				) : (
-					''
-				)}
-			</Row>
-		</>
+		<Row>
+			<Col className="w-100 justify-content-center">
+				<Row>
+					<FlightsSort xs={1} md={3} setSortOptions={setSortOptions} setSortedFlights={setSortedFlights} />
+				</Row>
+				<Row xs={1} md={3} className="g-4 mt-2">
+					{role === 'Диспетчер' || role === 'dispatcher' ? (
+						<FilghtsTable flights={flightsArr} pageActiveFlights={pageActiveFlights} maxFlights={maxFlights} />
+					) : (
+						flightsArr.map((flight, index) => {
+							return <FlightCard flight={flight} key={index} />;
+						})
+					)}
+				</Row>
+				<Row>
+					{sortedFlights.length - maxFlights > 0 ? (
+						<FlightsPagination maxPagination={maxPagination} setActiveFlights={setPageActiveFlights} activeFlights={pageActiveFlights} />
+					) : (
+						''
+					)}
+				</Row>
+			</Col>
+		</Row>
 	);
 };
 export default Flights;
