@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/CRM-passenger-transportation/static/css/main.1711f6ce.css",
+    "main.js": "/CRM-passenger-transportation/static/js/main.01043b67.js",
+    "static/media/login_bg.jpg": "/CRM-passenger-transportation/static/media/login_bg.5a22e018b2d2522f474d.jpg",
+    "static/media/Auto_Big_bus_Setra_095409_.jpg": "/CRM-passenger-transportation/static/media/Auto_Big_bus_Setra_095409_.c3bcece72d4a7f5adff7.jpg",
+    "static/media/bus_profile.jpg": "/CRM-passenger-transportation/static/media/bus_profile.d512f6880548fb63db27.jpg",
+    "static/media/Article_173645_860_575.jpg": "/CRM-passenger-transportation/static/media/Article_173645_860_575.483d03a031bf3a8d4196.jpg",
+    "static/media/logo.png": "/CRM-passenger-transportation/static/media/logo.fcf893625aaef2070901.png",
+    "static/media/liAfterWhite.svg": "/CRM-passenger-transportation/static/media/liAfterWhite.a72dc2d6f439b333981ed3b57e83cde8.svg",
+    "index.html": "/CRM-passenger-transportation/index.html",
+    "main.1711f6ce.css.map": "/CRM-passenger-transportation/static/css/main.1711f6ce.css.map",
+    "main.01043b67.js.map": "/CRM-passenger-transportation/static/js/main.01043b67.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1711f6ce.css",
+    "static/js/main.01043b67.js"
+  ]
+}
